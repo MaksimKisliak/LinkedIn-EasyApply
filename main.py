@@ -2,7 +2,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException
-from selenium import webdriver
 from selenium.webdriver import Chrome
 import os
 from dotenv import load_dotenv
@@ -37,7 +36,6 @@ class LinkedInJobApply:
         self.driver = Chrome()
         self.wait = WebDriverWait(self.driver, 10)
         self.phone = "1234567891"
-        self.main_window_id = None
 
     def login(self):
         """
@@ -64,9 +62,9 @@ class LinkedInJobApply:
         """
         job_element.click()
 
-        self.driver.switch_to.window(self.main_window_id)
         try:
-            easy_apply_click = self.wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, '.jobs-apply-button--top-card button')))
+            easy_apply_click = self.wait.until(EC.presence_of_element_located((By.CSS_SELECTOR,
+                                                                               '.jobs-apply-button--top-card button')))
             easy_apply_click.click()
             self.wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, ".fb-single-line-text input")))
             add_number = self.driver.find_element(By.CSS_SELECTOR, '.fb-single-line-text input')
@@ -90,14 +88,12 @@ class LinkedInJobApply:
         except NoSuchElementException:
             pass
         finally:
-            self.driver.switch_to.window(self.main_window_id)
-            self.wait.until(EC.number_of_windows_to_be(1))
+            pass
 
     def apply_to_all_jobs(self):
         """
         Method to apply to all jobs in the LinkedIn job search page
         """
-        self.main_window_id = self.driver.current_window_handle
         self.driver.get(self.JOB_SEARCH_URL)
         self.wait.until(EC.url_contains("search"))
         jobs_block = self.wait.until(EC.presence_of_element_located((By.CLASS_NAME, 'scaffold-layout__list-container')))
