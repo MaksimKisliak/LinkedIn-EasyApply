@@ -1,5 +1,5 @@
 # LinkedIn Job Application Automation
-<p>This is a Python script that automates job applications on LinkedIn. The script logs into a LinkedIn account, navigates to a job search page, and applies to all the jobs on the page.</p>Prerequisites
+<p>This is a Python script that automates job applications on LinkedIn. The script logs into a LinkedIn account, navigates to a job search page, and applies to all the jobs on the page. The application was created as part of the 100 Days of Code - The Complete Python Pro Bootcamp course challenge.</p>Prerequisites
 <p>To run the script, you will need:</p>
 <ul>
  <li>Python 3.6 or higher installed on your computer</li>
